@@ -79,32 +79,31 @@ new_exercise(6);
 // $name variables are decided as seen in the code, fix all the bugs whilst keeping the functionality!
 $arr = [];
 
-
 function combineNames($str1 = "", $str2 = "") {
     $params = [$str1, $str2];
-    foreach($params as $param) {
+    foreach($params as &$param) { //added & before $param
         if ($param == "") {
             $param = randomHeroName();
         }
     }
-    echo implode($params, " - ");
+    return implode(" - ", $params); // changed echo to return
+    // switched order of pieces and glue parameters
 }
 
-
-function randomGenerate($arr, $amount) {
-    for ($i = $amount; $i > 0; $i--) {
-        array_push($arr, randomHeroName());
-    }
-
-    return $amount;
-}
+//function randomGenerate($arr, $amount) {
+    //for ($i = $amount; $i > 0; $i--) {
+        //array_push($arr, randomHeroName());
+    //}
+    //return $amount;
+//}
 
 function randomHeroName()
 {
     $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
-    $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"]
+    $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
+    //added semicolon
     $heroes = [$hero_firstnames, $hero_lastnames];
-    $randname = $heroes[rand(0,count($heroes))][rand(0, 10)];
+    $randname = $heroes[rand(0,count($heroes)-1)][rand(0, 10)]; //added -1
 
     echo $randname;
 }
@@ -112,8 +111,32 @@ function randomHeroName()
 echo "Here is the name: " . combineNames();
 
 
+new_exercise(7);
+function copyright(int $year) {
+    echo "&copy; $year BeCode"; // used echo instead of return
+}
+//print the copyright
+copyright((int)date('Y')); //added(int) before date
 
 
+
+new_exercise(8);
+function login(string $email, string $password) {
+    if($email == 'john@example.be' && $password == 'pocahontas') {
+        return 'Welcome John Smith<br>'; //added Smith after John, added br
+        //return ' Smith'; unreachable statement
+    }
+    return 'No access<br>'; //added br
+}
+
+//do not change anything below
+//should great the user with his full name (John Smith)
+echo login('john@example.be', 'pocahontas');
+//no access
+echo login('john@example.be', 'dfgidfgdfg');
+//no access
+echo login('wrong@example.be', 'wrong');
+//you can change things again!
 
 
 ?>
