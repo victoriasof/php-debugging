@@ -27,4 +27,3 @@ Must-have features
 Open up the junior.php.broken file, read the comments, fix the code blocks as requested in the comments and put the final file expert.php in the repository folder as requested.
 
 You will change this junior code in expert code!
-
